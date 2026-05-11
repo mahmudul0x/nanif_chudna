@@ -3,7 +3,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getBlogPostBySlug } from "@/lib/blog-data";
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/blog_/$slug")({
   loader: ({ params }) => {
     const post = getBlogPostBySlug(params.slug);
 
