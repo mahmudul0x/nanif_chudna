@@ -25,6 +25,7 @@ import {
 import heroClinic from "@/assets/hero-clinic.jpg";
 import heroSmile from "@/assets/hero-smile.jpg";
 import doctorPortrait from "@/assets/doctor-portrait.jpg";
+import heroCoupleClinic from "@/assets/hero-couple-clinic.jpg";
 import equipmentImg from "@/assets/equipment.jpg";
 
 export const Route = createFileRoute("/")({
@@ -68,6 +69,19 @@ const heroSlides = [
   },
 ];
 
+const homepageHeroSlides = [
+  heroSlides[0],
+  heroSlides[1],
+  {
+    ...heroSlides[2],
+    image: heroCoupleClinic,
+    eyebrow: "Trusted Experience",
+    title: ["Welcoming Care", "For Every Patient"] as [string, string],
+    subtitle:
+      "A warm, modern dental experience for individuals and families who value comfort, trust, and real results.",
+  },
+];
+
 function HomePage() {
   return (
     <>
@@ -86,13 +100,13 @@ function HomePage() {
 function Hero() {
   const [active, setActive] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setActive((a) => (a + 1) % heroSlides.length), 6500);
+    const t = setInterval(() => setActive((a) => (a + 1) % homepageHeroSlides.length), 6500);
     return () => clearInterval(t);
   }, []);
 
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-navy">
-      {heroSlides.map((s, i) => (
+      {homepageHeroSlides.map((s, i) => (
         <div
           key={i}
           className={`absolute inset-0 transition-opacity duration-1000 ${i === active ? "opacity-100" : "opacity-0"}`}
@@ -128,7 +142,7 @@ function Hero() {
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 pt-20">
         <div className="max-w-2xl text-navy-foreground">
-          {heroSlides.map((s, i) => (
+          {homepageHeroSlides.map((s, i) => (
             <div key={i} className={`${i === active ? "block animate-fade-up" : "hidden"}`}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs font-semibold uppercase tracking-[0.2em] text-primary-glow mb-6">
                 <Sparkles className="h-3.5 w-3.5" /> {s.eyebrow}
@@ -155,7 +169,7 @@ function Hero() {
           ))}
 
           <div className="mt-12 flex gap-2">
-            {heroSlides.map((_, i) => (
+            {homepageHeroSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
