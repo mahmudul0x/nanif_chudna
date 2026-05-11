@@ -46,10 +46,20 @@ function ServicesPage() {
               className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${i % 2 ? "lg:[direction:rtl]" : ""}`}
             >
               <div className="[direction:ltr]">
-                <div className="aspect-[4/3] rounded-3xl bg-gradient-primary shadow-elegant relative overflow-hidden p-12 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                  <div className="relative h-40 w-40 rounded-full glass flex items-center justify-center text-primary animate-float">
-                    <s.icon className="h-20 w-20" />
+                <div className="aspect-[4/3] rounded-3xl shadow-elegant relative overflow-hidden">
+                  {s.image ? (
+                    <img
+                      src={s.image}
+                      alt={s.name}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-primary" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent" />
+                  <div className="absolute left-6 bottom-6 h-20 w-20 rounded-3xl glass flex items-center justify-center text-primary-foreground">
+                    <s.icon className="h-10 w-10" />
                   </div>
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full glass text-xs font-semibold text-navy">
                     0{i + 1}

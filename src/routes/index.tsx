@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -178,7 +179,7 @@ const trustItems = [
 
 function TrustBar() {
   return (
-    <section className="relative -mt-16 z-20">
+    <section className="relative -mt-6 md:mt-2 z-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="glass rounded-3xl shadow-elegant p-6 md:p-10 grid grid-cols-2 md:grid-cols-4 gap-6">
           {trustItems.map((t) => (
@@ -217,13 +218,24 @@ function ServicesPreview() {
             <Link
               key={s.slug}
               to="/services"
-              className="group relative overflow-hidden rounded-3xl bg-card p-8 shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 border border-border/50"
+              className="group relative overflow-hidden rounded-3xl bg-card shadow-soft hover:shadow-elegant transition-all hover:-translate-y-1 border border-border/50"
             >
-              <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition" />
-              <div className="relative">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground shadow-glow mb-5">
+              <div className="relative h-56 overflow-hidden">
+                {s.image ? (
+                  <img
+                    src={s.image}
+                    alt={s.name}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : null}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/30 to-transparent" />
+                <div className="absolute bottom-5 left-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground shadow-glow">
                   <s.icon className="h-7 w-7" />
                 </div>
+              </div>
+              <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition" />
+              <div className="relative p-8">
                 <h3 className="font-display text-2xl font-semibold text-navy mb-2">{s.name}</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">{s.short}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
@@ -416,16 +428,43 @@ const reviews = [
   {
     name: "Rashed Mahmud",
     text: "Best dental clinic in Dinajpur. Modern equipment, sterile environment and a doctor who truly cares.",
-    rating: 5,
+    rating: 4,
   },
   {
     name: "Sumaiya Islam",
     text: "I got my smile makeover here and I can't stop smiling! Beautiful work, beautiful clinic.",
     rating: 5,
   },
+  {
+    name: "Nusrat Jahan",
+    text: "Clinic ta onek clean and staff ra khub helpful. Teeth whitening er result dekhte really bhalo lagse.",
+    rating: 4,
+  },
+  {
+    name: "Mehedi Hasan",
+    text: "Appointment process easy chilo, treatment o smooth. Aro ektu wait kom hole perfect hoto.",
+    rating: 3,
+  },
+  {
+    name: "Sharmeen Rahman",
+    text: "Alhamdulillah, amar braces journey ekhane khub bhalo jacche. Doctor explains everything in simple English and Bangla.",
+    rating: 5,
+  },
+  {
+    name: "Tanvir Ahmed",
+    text: "Extraction niye onek voy chilo, but honestly experience ta expected er cheye much better chilo.",
+    rating: 4,
+  },
+  {
+    name: "Priyanka Saha",
+    text: "Service bhalo, but amar slot ta ektu late start hoyechilo. Overall doctor was caring and treatment was good.",
+    rating: 2,
+  },
 ];
 
 function TestimonialsPreview() {
+  const autoplay = Autoplay({ delay: 3500, stopOnInteraction: true, stopOnMouseEnter: true });
+
   return (
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -438,7 +477,11 @@ function TestimonialsPreview() {
           }
           description="Honest words from real people whose smiles we've cared for."
         />
-        <Carousel opts={{ align: "start", loop: true }} className="mx-auto max-w-6xl">
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[autoplay]}
+          className="mx-auto max-w-6xl"
+        >
           <CarouselContent className="-ml-6">
             {reviews.map((r) => (
               <CarouselItem key={r.name} className="pl-6 md:basis-1/2 xl:basis-1/3">

@@ -11,6 +11,16 @@ import {
   HeartPulse,
   Syringe,
 } from "lucide-react";
+import rootCanalImg from "@/assets/service-root-canal.jpg";
+import dentalFillingImg from "@/assets/service-dental-filling.jpg";
+import extractionImg from "@/assets/service-extraction.jpg";
+import implantsImg from "@/assets/service-implants.jpg";
+import whiteningImg from "@/assets/service-whitening.jpg";
+import orthodonticsImg from "@/assets/service-orthodontics.jpg";
+import heroClinicImg from "@/assets/hero-clinic.jpg";
+import heroSmileImg from "@/assets/hero-smile.jpg";
+import doctorPortraitImg from "@/assets/doctor-portrait.jpg";
+import equipmentImg from "@/assets/equipment.jpg";
 
 export type Service = {
   slug: string;
@@ -20,6 +30,7 @@ export type Service = {
   benefits: string[];
   process: string[];
   icon: typeof Sparkles;
+  image?: string;
 };
 
 export const services: Service[] = [
@@ -43,6 +54,7 @@ export const services: Service[] = [
       "Crown protection",
     ],
     icon: HeartPulse,
+    image: rootCanalImg,
   },
   {
     slug: "dental-filling",
@@ -53,6 +65,7 @@ export const services: Service[] = [
     benefits: ["Natural appearance", "Strong & durable", "Mercury-free", "Same-day procedure"],
     process: ["Cavity assessment", "Gentle removal", "Bonding & shaping", "Polish & finish"],
     icon: Sparkles,
+    image: dentalFillingImg,
   },
   {
     slug: "extraction",
@@ -63,6 +76,7 @@ export const services: Service[] = [
     benefits: ["Painless procedure", "Quick recovery", "Bone preservation", "Sedation options"],
     process: ["Consultation", "Anesthesia", "Gentle removal", "Aftercare guidance"],
     icon: Scissors,
+    image: extractionImg,
   },
   {
     slug: "implants",
@@ -72,6 +86,7 @@ export const services: Service[] = [
     benefits: ["Lifetime solution", "Natural feel", "Preserves jawbone", "No diet restrictions"],
     process: ["3D scan & planning", "Implant placement", "Healing period", "Crown attachment"],
     icon: Crown,
+    image: implantsImg,
   },
   {
     slug: "whitening",
@@ -81,6 +96,7 @@ export const services: Service[] = [
     benefits: ["Up to 8 shades whiter", "Safe & enamel-friendly", "Long-lasting", "Quick session"],
     process: ["Shade assessment", "Gum protection", "Whitening application", "Final polish"],
     icon: Wand2,
+    image: whiteningImg,
   },
   {
     slug: "orthodontics",
@@ -91,6 +107,7 @@ export const services: Service[] = [
     benefits: ["Better alignment", "Improved bite", "Easier cleaning", "Boosted confidence"],
     process: ["Smile analysis", "Custom treatment plan", "Regular adjustments", "Retention phase"],
     icon: Activity,
+    image: orthodonticsImg,
   },
   {
     slug: "cosmetic",
@@ -101,6 +118,7 @@ export const services: Service[] = [
     benefits: ["Hollywood smile", "Custom-crafted", "Stain resistant", "Confidence boost"],
     process: ["Smile design", "Tooth preparation", "Veneer crafting", "Final placement"],
     icon: Smile,
+    image: heroSmileImg,
   },
   {
     slug: "pediatric",
@@ -110,6 +128,7 @@ export const services: Service[] = [
     benefits: ["Kid-friendly", "Preventive focus", "Education-based", "Painless techniques"],
     process: ["Friendly intro", "Gentle examination", "Preventive care", "Parent guidance"],
     icon: Baby,
+    image: heroClinicImg,
   },
   {
     slug: "gum-treatment",
@@ -119,6 +138,7 @@ export const services: Service[] = [
     benefits: ["Stops gum disease", "Fresh breath", "Saves teeth", "Reduces inflammation"],
     process: ["Periodontal exam", "Deep cleaning", "Targeted therapy", "Maintenance plan"],
     icon: Shield,
+    image: doctorPortraitImg,
   },
   {
     slug: "oral-surgery",
@@ -129,6 +149,7 @@ export const services: Service[] = [
     benefits: ["Expert specialist", "Sterile environment", "Sedation options", "Faster healing"],
     process: ["Consultation", "Pre-op planning", "Surgical procedure", "Recovery support"],
     icon: Syringe,
+    image: equipmentImg,
   },
   {
     slug: "smile-design",
@@ -138,5 +159,6 @@ export const services: Service[] = [
     benefits: ["Personalized design", "Digital preview", "Natural results", "Boosts confidence"],
     process: ["Digital smile preview", "Treatment planning", "Smile crafting", "Final reveal"],
     icon: Stethoscope,
+    image: heroSmileImg,
   },
 ];
