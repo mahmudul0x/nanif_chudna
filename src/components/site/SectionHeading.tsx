@@ -17,7 +17,9 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${alignCls} mb-12`}>
       {eyebrow && (
-        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint text-mint-foreground text-xs font-semibold uppercase tracking-wider mb-4`}>
+        <div
+          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint text-mint-foreground text-xs font-semibold uppercase tracking-wider mb-4`}
+        >
           <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {eyebrow}
         </div>
       )}

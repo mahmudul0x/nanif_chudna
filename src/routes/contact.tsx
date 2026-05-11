@@ -12,7 +12,11 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact | Hanif's Dental, Dinajpur" },
-      { name: "description", content: "Visit Hanif's Dental at Law College Mor Mosque, Dinajpur. Call 01783-215958 or message us on WhatsApp." },
+      {
+        name: "description",
+        content:
+          "Visit Hanif's Dental at Law College Mor Mosque, Dinajpur. Call 01783-215958 or message us on WhatsApp.",
+      },
     ],
   }),
   component: ContactPage,
@@ -26,17 +30,34 @@ const schema = z.object({
 
 function ContactPage() {
   const [loading, setLoading] = useState(false);
+  const clinicPhone = "8801783215958";
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const data = Object.fromEntries(fd);
+    const data = Object.fromEntries(fd) as Record<string, string>;
     const parsed = schema.safeParse(data);
-    if (!parsed.success) { toast.error("Please complete all fields correctly."); return; }
+    if (!parsed.success) {
+      toast.error("Please complete all fields correctly.");
+      return;
+    }
     setLoading(true);
     await new Promise((r) => setTimeout(r, 700));
+    const values = parsed.data;
+    const contactMessage = [
+      "Hello, I am contacting you from the website.",
+      `Name: ${values.name}`,
+      `Email: ${values.email}`,
+      `Message: ${values.message}`,
+    ].join("\n");
+
+    window.open(
+      `https://wa.me/${clinicPhone}?text=${encodeURIComponent(contactMessage)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
     setLoading(false);
-    toast.success("Message sent! We'll get back to you soon.");
+    toast.success("WhatsApp message draft opened. Send it and the clinic will reply.");
     e.currentTarget.reset();
   };
 
@@ -44,9 +65,13 @@ function ContactPage() {
     <>
       <section className="pt-32 pb-12 bg-gradient-hero">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint text-mint-foreground text-xs font-semibold uppercase tracking-wider mb-4">Contact</div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint text-mint-foreground text-xs font-semibold uppercase tracking-wider mb-4">
+            Contact
+          </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-navy">Get in Touch</h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">We'd love to hear from you. Reach out anytime — we typically respond within hours.</p>
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
+            We'd love to hear from you. Reach out anytime — we typically respond within hours.
+          </p>
         </div>
       </section>
 
@@ -54,17 +79,45 @@ function ContactPage() {
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-3 gap-6">
           {[
             { icon: Phone, title: "Call Us", lines: ["01783-215958"], href: "tel:01783215958" },
-            { icon: Mail, title: "Email", lines: ["abuhanifdnj@gmail.com"], href: "mailto:abuhanifdnj@gmail.com" },
-            { icon: MapPin, title: "Visit Us", lines: ["Law College Mor Mosque,", "Dinajpur, Bangladesh"] },
-          ].map((c) => (
-            <a key={c.title} href={c.href} className="group p-8 rounded-3xl bg-card shadow-soft border border-border/50 hover:shadow-elegant transition-all hover:-translate-y-1 text-center">
-              <div className="mx-auto h-14 w-14 rounded-2xl bg-gradient-primary flex items-center justify-center text-primary-foreground shadow-glow mb-4 group-hover:scale-110 transition-transform">
-                <c.icon className="h-6 w-6" />
+            {
+              icon: Mail,
+              title: "Email",
+              lines: ["abuhanifdnj@gmail.com"],
+              href: "mailto:abuhanifdnj@gmail.com",
+            },
+            {
+              icon: MapPin,
+              title: "Visit Us",
+              lines: ["Law College Mor Mosque,", "Dinajpur, Bangladesh"],
+            },
+          ].map((c) => {
+            const cardClassName =
+              "group p-8 rounded-3xl bg-card shadow-soft border border-border/50 hover:shadow-elegant transition-all hover:-translate-y-1 text-center";
+
+            const content = (
+              <>
+                <div className="mx-auto h-14 w-14 rounded-2xl bg-gradient-primary flex items-center justify-center text-primary-foreground shadow-glow mb-4 group-hover:scale-110 transition-transform">
+                  <c.icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-display text-xl text-navy mb-2">{c.title}</h3>
+                {c.lines.map((l) => (
+                  <div key={l} className="text-muted-foreground">
+                    {l}
+                  </div>
+                ))}
+              </>
+            );
+
+            return c.href ? (
+              <a key={c.title} href={c.href} className={cardClassName}>
+                {content}
+              </a>
+            ) : (
+              <div key={c.title} className={cardClassName}>
+                {content}
               </div>
-              <h3 className="font-display text-xl text-navy mb-2">{c.title}</h3>
-              {c.lines.map((l) => <div key={l} className="text-muted-foreground">{l}</div>)}
-            </a>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -80,11 +133,25 @@ function ContactPage() {
               </div>
               <div>
                 <Label htmlFor="email">Email *</Label>
-                <Input id="email" name="email" type="email" required maxLength={255} className="mt-2 h-12" />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  maxLength={255}
+                  className="mt-2 h-12"
+                />
               </div>
               <div>
                 <Label htmlFor="message">Message *</Label>
-                <Textarea id="message" name="message" rows={5} required maxLength={1000} className="mt-2" />
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  maxLength={1000}
+                  className="mt-2"
+                />
               </div>
               <Button type="submit" variant="hero" size="lg" className="w-full" disabled={loading}>
                 {loading ? "Sending..." : "Send Message"}
@@ -109,9 +176,31 @@ function ContactPage() {
               <div className="relative">
                 <h3 className="font-display text-2xl mb-4">Connect</h3>
                 <ul className="space-y-3 text-sm">
-                  <li className="flex items-center gap-3"><Clock className="h-5 w-5 text-primary-glow" /> Sat–Thu: 10am–9pm · Fri: 4pm–9pm</li>
-                  <li className="flex items-center gap-3"><Instagram className="h-5 w-5 text-primary-glow" /> <a href="https://instagram.com/dr.abuhanif" className="hover:text-primary-glow" target="_blank" rel="noreferrer">@dr.abuhanif</a></li>
-                  <li className="flex items-center gap-3"><MessageCircle className="h-5 w-5 text-primary-glow" /> <a href="https://wa.me/8801783215958" className="hover:text-primary-glow" target="_blank" rel="noreferrer">WhatsApp Chat</a></li>
+                  <li className="flex items-center gap-3">
+                    <Clock className="h-5 w-5 text-primary-glow" /> Sat–Thu: 10am–9pm · Fri: 4pm–9pm
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Instagram className="h-5 w-5 text-primary-glow" />{" "}
+                    <a
+                      href="https://instagram.com/dr.abuhanif"
+                      className="hover:text-primary-glow"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      @dr.abuhanif
+                    </a>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <MessageCircle className="h-5 w-5 text-primary-glow" />{" "}
+                    <a
+                      href="https://wa.me/8801783215958"
+                      className="hover:text-primary-glow"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      WhatsApp Chat
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

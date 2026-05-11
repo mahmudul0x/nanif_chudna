@@ -35,12 +35,19 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2 group">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary shadow-glow group-hover:scale-110 transition-transform">
             <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6 text-primary-foreground">
-              <path d="M12 2c-2 0-3.5 1-5 1S4 2 3 4s0 5 1 8 2 9 4 9 2-3 4-3 2 3 4 3 3-6 4-9 2-6 1-8-2.5-1-4-1-3-1-5-1z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round"/>
+              <path
+                d="M12 2c-2 0-3.5 1-5 1S4 2 3 4s0 5 1 8 2 9 4 9 2-3 4-3 2 3 4 3 3-6 4-9 2-6 1-8-2.5-1-4-1-3-1-5-1z"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
           <div className="leading-tight">
             <div className="font-display text-lg font-bold text-navy">Hanif's Dental</div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Premium Care</div>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              Premium Care
+            </div>
           </div>
         </Link>
 
@@ -58,7 +65,10 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:01783215958" className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary">
+          <a
+            href="tel:01783215958"
+            className="flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-primary"
+          >
             <Phone className="h-4 w-4" /> 01783-215958
           </a>
           <Button asChild variant="hero" size="sm">
@@ -89,7 +99,9 @@ export function Header() {
               </Link>
             ))}
             <Button asChild variant="hero" className="mt-3">
-              <Link to="/booking" onClick={() => setOpen(false)}>Book Appointment</Link>
+              <Link to="/booking" onClick={() => setOpen(false)}>
+                Book Appointment
+              </Link>
             </Button>
           </div>
         </div>

@@ -1,4 +1,16 @@
-import { Sparkles, Stethoscope, Smile, Activity, Baby, Shield, Scissors, Wand2, Crown, HeartPulse, Syringe } from "lucide-react";
+import {
+  Sparkles,
+  Stethoscope,
+  Smile,
+  Activity,
+  Baby,
+  Shield,
+  Scissors,
+  Wand2,
+  Crown,
+  HeartPulse,
+  Syringe,
+} from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -17,15 +29,27 @@ export const services: Service[] = [
     short: "Pain-free endodontic care that saves your natural tooth.",
     description:
       "Modern, microscope-assisted root canal therapy to relieve pain and preserve your natural tooth structure with the highest precision.",
-    benefits: ["Eliminates tooth pain", "Saves natural tooth", "Single-visit options", "Long-lasting results"],
-    process: ["Diagnosis & X-ray", "Local anesthesia", "Cleaning & shaping", "Filling & sealing", "Crown protection"],
+    benefits: [
+      "Eliminates tooth pain",
+      "Saves natural tooth",
+      "Single-visit options",
+      "Long-lasting results",
+    ],
+    process: [
+      "Diagnosis & X-ray",
+      "Local anesthesia",
+      "Cleaning & shaping",
+      "Filling & sealing",
+      "Crown protection",
+    ],
     icon: HeartPulse,
   },
   {
     slug: "dental-filling",
     name: "Dental Filling",
     short: "Tooth-colored restorations that look completely natural.",
-    description: "Premium composite and ceramic fillings that restore decayed teeth invisibly and durably.",
+    description:
+      "Premium composite and ceramic fillings that restore decayed teeth invisibly and durably.",
     benefits: ["Natural appearance", "Strong & durable", "Mercury-free", "Same-day procedure"],
     process: ["Cavity assessment", "Gentle removal", "Bonding & shaping", "Polish & finish"],
     icon: Sparkles,
@@ -34,7 +58,8 @@ export const services: Service[] = [
     slug: "extraction",
     name: "Tooth Extraction",
     short: "Gentle, comfortable removal when extraction is necessary.",
-    description: "Atraumatic extraction techniques to ensure minimal discomfort and faster healing.",
+    description:
+      "Atraumatic extraction techniques to ensure minimal discomfort and faster healing.",
     benefits: ["Painless procedure", "Quick recovery", "Bone preservation", "Sedation options"],
     process: ["Consultation", "Anesthesia", "Gentle removal", "Aftercare guidance"],
     icon: Scissors,
@@ -61,7 +86,8 @@ export const services: Service[] = [
     slug: "orthodontics",
     name: "Orthodontics",
     short: "Braces and aligners for perfectly aligned teeth.",
-    description: "Modern braces and clear aligners that straighten teeth discreetly and comfortably.",
+    description:
+      "Modern braces and clear aligners that straighten teeth discreetly and comfortably.",
     benefits: ["Better alignment", "Improved bite", "Easier cleaning", "Boosted confidence"],
     process: ["Smile analysis", "Custom treatment plan", "Regular adjustments", "Retention phase"],
     icon: Activity,
@@ -70,7 +96,8 @@ export const services: Service[] = [
     slug: "cosmetic",
     name: "Cosmetic Dentistry",
     short: "Veneers, bonding & smile makeovers crafted to perfection.",
-    description: "Transform your smile with premium veneers and cosmetic procedures designed for natural beauty.",
+    description:
+      "Transform your smile with premium veneers and cosmetic procedures designed for natural beauty.",
     benefits: ["Hollywood smile", "Custom-crafted", "Stain resistant", "Confidence boost"],
     process: ["Smile design", "Tooth preparation", "Veneer crafting", "Final placement"],
     icon: Smile,
@@ -97,7 +124,8 @@ export const services: Service[] = [
     slug: "oral-surgery",
     name: "Oral Surgery",
     short: "Advanced surgical procedures with precision and comfort.",
-    description: "Specialist-led oral and maxillofacial surgery from wisdom teeth to complex cases.",
+    description:
+      "Specialist-led oral and maxillofacial surgery from wisdom teeth to complex cases.",
     benefits: ["Expert specialist", "Sterile environment", "Sedation options", "Faster healing"],
     process: ["Consultation", "Pre-op planning", "Surgical procedure", "Recovery support"],
     icon: Syringe,

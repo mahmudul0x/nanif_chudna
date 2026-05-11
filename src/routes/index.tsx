@@ -121,10 +121,7 @@ function Hero() {
       <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 pt-20">
         <div className="max-w-2xl text-navy-foreground">
           {heroSlides.map((s, i) => (
-            <div
-              key={i}
-              className={`${i === active ? "block animate-fade-up" : "hidden"}`}
-            >
+            <div key={i} className={`${i === active ? "block animate-fade-up" : "hidden"}`}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-xs font-semibold uppercase tracking-[0.2em] text-primary-glow mb-6">
                 <Sparkles className="h-3.5 w-3.5" /> {s.eyebrow}
               </div>
@@ -201,7 +198,11 @@ function ServicesPreview() {
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Our Treatments"
-          title={<>Comprehensive Care, <span className="text-gradient-primary">Crafted For You</span></>}
+          title={
+            <>
+              Comprehensive Care, <span className="text-gradient-primary">Crafted For You</span>
+            </>
+          }
           description="From routine check-ups to advanced cosmetic procedures, we deliver world-class dentistry under one roof."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -227,7 +228,9 @@ function ServicesPreview() {
         </div>
         <div className="mt-12 text-center">
           <Button asChild variant="hero" size="lg">
-            <Link to="/services">View All Services <ArrowRight className="h-5 w-5" /></Link>
+            <Link to="/services">
+              View All Services <ArrowRight className="h-5 w-5" />
+            </Link>
           </Button>
         </div>
       </div>
@@ -243,11 +246,18 @@ function DoctorSection() {
         <div className="relative">
           <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-2xl rounded-[3rem]" />
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-elegant aspect-[4/5]">
-            <img src={doctorPortrait} alt="Dr. মো. আবু হানিফ" className="h-full w-full object-cover" loading="lazy" />
+            <img
+              src={doctorPortrait}
+              alt="Dr. মো. আবু হানিফ"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
           <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-5 shadow-elegant max-w-[220px]">
             <div className="flex gap-1 mb-1">
-              {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-gold text-gold" />)}
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+              ))}
             </div>
             <div className="text-2xl font-display font-bold text-navy">4.9/5</div>
             <div className="text-xs text-muted-foreground">From 800+ patient reviews</div>
@@ -263,21 +273,28 @@ function DoctorSection() {
           </h2>
           <p className="mt-2 text-lg text-primary font-medium">Founder & Lead Dental Surgeon</p>
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-            With years of advanced training in oral & maxillofacial surgery and endodontics,
-            Dr. Hanif combines clinical excellence with genuine compassion — ensuring every patient
+            With years of advanced training in oral & maxillofacial surgery and endodontics, Dr.
+            Hanif combines clinical excellence with genuine compassion — ensuring every patient
             leaves with a healthier smile and a calmer heart.
           </p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-3">
             {["BDS (RU)", "PGT (OMS)", "PGT (Endodontics)", "FCPS 1st Part (OMS)"].map((q) => (
-              <li key={q} className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border/60">
+              <li
+                key={q}
+                className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border/60"
+              >
                 <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
                 <span className="font-medium text-navy">{q}</span>
               </li>
             ))}
           </ul>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button asChild variant="hero" size="lg"><Link to="/about">Read Full Profile</Link></Button>
-            <Button asChild variant="outline" size="lg"><Link to="/booking">Book Consultation</Link></Button>
+            <Button asChild variant="hero" size="lg">
+              <Link to="/about">Read Full Profile</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/booking">Book Consultation</Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -288,7 +305,11 @@ function DoctorSection() {
 const steps = [
   { n: "01", title: "Consultation", desc: "Comprehensive discussion of your concerns and goals." },
   { n: "02", title: "Diagnosis", desc: "Advanced imaging and thorough oral examination." },
-  { n: "03", title: "Treatment Plan", desc: "Personalized roadmap tailored to your needs and budget." },
+  {
+    n: "03",
+    title: "Treatment Plan",
+    desc: "Personalized roadmap tailored to your needs and budget.",
+  },
   { n: "04", title: "Procedure", desc: "Precision treatment in a calm, sterile environment." },
   { n: "05", title: "Recovery", desc: "Ongoing support and aftercare for lasting results." },
 ];
@@ -299,13 +320,22 @@ function ExperienceTimeline() {
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Patient Journey"
-          title={<>Your Treatment <span className="text-gradient-primary">Experience</span></>}
+          title={
+            <>
+              Your Treatment <span className="text-gradient-primary">Experience</span>
+            </>
+          }
           description="A premium, calm and transparent journey — from your first call to your brightest smile."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           {steps.map((s) => (
-            <div key={s.n} className="relative p-6 rounded-2xl bg-card border border-border/50 hover:shadow-soft transition-all hover:-translate-y-1">
-              <div className="font-display text-5xl font-bold text-gradient-primary mb-2">{s.n}</div>
+            <div
+              key={s.n}
+              className="relative p-6 rounded-2xl bg-card border border-border/50 hover:shadow-soft transition-all hover:-translate-y-1"
+            >
+              <div className="font-display text-5xl font-bold text-gradient-primary mb-2">
+                {s.n}
+              </div>
               <h3 className="font-semibold text-navy text-lg">{s.title}</h3>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.desc}</p>
             </div>
@@ -322,12 +352,21 @@ function GalleryPreview() {
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Smile Gallery"
-          title={<>Real Smiles, <span className="text-gradient-primary">Real Transformations</span></>}
+          title={
+            <>
+              Real Smiles, <span className="text-gradient-primary">Real Transformations</span>
+            </>
+          }
           description="A glimpse into the lives we've changed and the confidence we've restored."
         />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="col-span-2 row-span-2 relative overflow-hidden rounded-3xl group shadow-soft aspect-square md:aspect-auto">
-            <img src={heroSmile} alt="Smile transformation" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+            <img
+              src={heroSmile}
+              alt="Smile transformation"
+              className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
+              loading="lazy"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent flex items-end p-6">
               <div className="text-navy-foreground">
                 <div className="text-xs uppercase tracking-widest text-primary-glow">Featured</div>
@@ -336,13 +375,25 @@ function GalleryPreview() {
             </div>
           </div>
           {[heroClinic, equipmentImg, doctorPortrait, heroClinic].map((img, i) => (
-            <div key={i} className="relative overflow-hidden rounded-2xl group shadow-soft aspect-square">
-              <img src={img} alt="" className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+            <div
+              key={i}
+              className="relative overflow-hidden rounded-2xl group shadow-soft aspect-square"
+            >
+              <img
+                src={img}
+                alt=""
+                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
+              />
             </div>
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Button asChild variant="outline" size="lg"><Link to="/gallery">Explore Full Gallery <ArrowRight className="h-4 w-4" /></Link></Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/gallery">
+              Explore Full Gallery <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -350,9 +401,21 @@ function GalleryPreview() {
 }
 
 const reviews = [
-  { name: "Farhana Akter", text: "Dr. Hanif is incredibly gentle and professional. My root canal was completely painless. Highly recommended!", rating: 5 },
-  { name: "Rashed Mahmud", text: "Best dental clinic in Dinajpur. Modern equipment, sterile environment and a doctor who truly cares.", rating: 5 },
-  { name: "Sumaiya Islam", text: "I got my smile makeover here and I can't stop smiling! Beautiful work, beautiful clinic.", rating: 5 },
+  {
+    name: "Farhana Akter",
+    text: "Dr. Hanif is incredibly gentle and professional. My root canal was completely painless. Highly recommended!",
+    rating: 5,
+  },
+  {
+    name: "Rashed Mahmud",
+    text: "Best dental clinic in Dinajpur. Modern equipment, sterile environment and a doctor who truly cares.",
+    rating: 5,
+  },
+  {
+    name: "Sumaiya Islam",
+    text: "I got my smile makeover here and I can't stop smiling! Beautiful work, beautiful clinic.",
+    rating: 5,
+  },
 ];
 
 function TestimonialsPreview() {
@@ -361,14 +424,23 @@ function TestimonialsPreview() {
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Patient Stories"
-          title={<>Loved by <span className="text-gradient-primary">Our Patients</span></>}
+          title={
+            <>
+              Loved by <span className="text-gradient-primary">Our Patients</span>
+            </>
+          }
           description="Honest words from real people whose smiles we've cared for."
         />
         <div className="grid gap-6 md:grid-cols-3">
           {reviews.map((r) => (
-            <div key={r.name} className="p-8 rounded-3xl bg-card shadow-soft border border-border/50 relative">
+            <div
+              key={r.name}
+              className="p-8 rounded-3xl bg-card shadow-soft border border-border/50 relative"
+            >
               <div className="flex gap-1 mb-4">
-                {[...Array(r.rating)].map((_, i) => <Star key={i} className="h-5 w-5 fill-gold text-gold" />)}
+                {[...Array(r.rating)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-gold text-gold" />
+                ))}
               </div>
               <p className="text-foreground/80 leading-relaxed italic">"{r.text}"</p>
               <div className="mt-6 flex items-center gap-3">
@@ -406,8 +478,12 @@ function FinalCTA() {
               Book your consultation with Dr. Abu Hanif today. Limited slots available each week.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild variant="gold" size="xl"><Link to="/booking">Book Appointment</Link></Button>
-              <Button asChild variant="glass" size="xl"><a href="tel:01783215958">Call: 01783-215958</a></Button>
+              <Button asChild variant="gold" size="xl">
+                <Link to="/booking">Book Appointment</Link>
+              </Button>
+              <Button asChild variant="glass" size="xl">
+                <a href="tel:01783215958">Call: 01783-215958</a>
+              </Button>
             </div>
           </div>
         </div>
