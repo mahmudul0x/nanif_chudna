@@ -1,6 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { services } from "@/lib/services-data";
 import {
@@ -431,30 +438,35 @@ function TestimonialsPreview() {
           }
           description="Honest words from real people whose smiles we've cared for."
         />
-        <div className="grid gap-6 md:grid-cols-3">
-          {reviews.map((r) => (
-            <div
-              key={r.name}
-              className="p-8 rounded-3xl bg-card shadow-soft border border-border/50 relative"
-            >
-              <div className="flex gap-1 mb-4">
-                {[...Array(r.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-gold text-gold" />
-                ))}
-              </div>
-              <p className="text-foreground/80 leading-relaxed italic">"{r.text}"</p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="h-11 w-11 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold">
-                  {r.name.charAt(0)}
+        <Carousel opts={{ align: "start", loop: true }} className="mx-auto max-w-6xl">
+          <CarouselContent className="-ml-6">
+            {reviews.map((r) => (
+              <CarouselItem key={r.name} className="pl-6 md:basis-1/2 xl:basis-1/3">
+                <div className="h-full rounded-3xl bg-card p-8 shadow-soft border border-border/50 relative">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(r.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-gold text-gold" />
+                    ))}
+                  </div>
+                  <p className="text-foreground/80 leading-relaxed italic">"{r.text}"</p>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="h-11 w-11 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold">
+                      {r.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-navy">{r.name}</div>
+                      <div className="text-xs text-muted-foreground">Verified Patient</div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-semibold text-navy">{r.name}</div>
-                  <div className="text-xs text-muted-foreground">Verified Patient</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <CarouselPrevious className="static translate-y-0 rounded-full border-border/60" />
+            <CarouselNext className="static translate-y-0 rounded-full border-border/60" />
+          </div>
+        </Carousel>
       </div>
     </section>
   );
